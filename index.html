@@ -13,6 +13,7 @@
       display: flex;
       justify-content: center;
     }
+
     .container {
       background-color: #ffffff;
       padding: 2rem 2.5rem;
@@ -22,30 +23,33 @@
       width: 100%;
       border-top: 8px solid #156064;
       text-align: center;
-      display: flex;
-      flex-direction: column;
+      overflow: auto;
     }
+
     .logo {
-      max-width: 120px;
-      margin: 0 auto 1rem;
+      max-width: 100px;
+      margin-bottom: 1rem;
     }
+
     h1 {
       color: #982649;
       margin-bottom: 2rem;
       font-size: 1.5rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
+
     form {
-      text-align: left;
       width: 100%;
+      text-align: left;
     }
+
     label {
       display: block;
       margin-bottom: 6px;
       font-weight: 600;
       color: #333;
     }
+
     input[type="text"],
     input[type="email"],
     select {
@@ -56,13 +60,14 @@
       border-radius: 8px;
       box-sizing: border-box;
       font-size: 14px;
-      transition: border 0.3s ease;
     }
+
     input:focus,
     select:focus {
       border-color: #2CF6B3;
       outline: none;
     }
+
     input[type="submit"] {
       background-color: #156064;
       color: white;
@@ -72,43 +77,41 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
       width: 100%;
       margin-top: 1rem;
     }
+
     input[type="submit"]:hover {
       background-color: #F8E16C;
       color: #000;
     }
+
     @media (max-width: 600px) {
       .container {
         padding: 1.5rem;
-      }
-      .logo {
-        max-width: 100px;
       }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <img class="logo" src="https://raw.githubusercontent.com/ClementAmpleeGitGit/web-to-lead-form/main/assets/logo-tbu.png" alt="Logo">
-    <h1>Company Form Test Phoenix Project</h1>
+    <h1>Company Form Test<br>Phoenix Project</h1>
+
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000005hxQ9" method="POST">
       <input type="hidden" name="oid" value="00DgK000005hxQ9">
       <input type="hidden" name="retURL" value="https://www.google.com">
       <input type="hidden" name="debug" value="1">
       <input type="hidden" name="debugEmail" value="clement@amplee.tech">
 
-      <label for="first_name">Prénom *</label>
-      <input id="first_name" name="first_name" maxlength="40" type="text" required>
+      <label for="first_name">Prénom</label>
+      <input id="first_name" name="first_name" maxlength="40" type="text">
 
-      <label for="last_name">Nom *</label>
-      <input id="last_name" name="last_name" maxlength="80" type="text" required>
+      <label for="last_name">Nom</label>
+      <input id="last_name" name="last_name" maxlength="80" type="text">
 
-      <label for="email">Email *</label>
-      <input id="email" name="email" maxlength="80" type="email" required>
+      <label for="email">Email</label>
+      <input id="email" name="email" maxlength="80" type="email">
 
       <label for="company">Entreprise</label>
       <input id="company" name="company" maxlength="40" type="text">
@@ -116,22 +119,14 @@
       <label for="city">Ville</label>
       <input id="city" name="city" maxlength="40" type="text">
 
-      <label for="country_code">Pays *</label>
-      <select id="country_code" name="country_code" required>
-        <option value="">-- Sélectionnez --</option>
+      <label for="country_code">Pays</label>
+      <select id="country_code" name="country_code">
+        <option value="">-- Choisissez --</option>
         <option value="FR">France</option>
         <option value="BE">Belgique</option>
         <option value="CH">Suisse</option>
         <option value="CA">Canada</option>
         <option value="US">USA</option>
-      </select>
-
-      <label for="state_code">Région / État</label>
-      <select id="state_code" name="state_code">
-        <option value="">-- Optionnel --</option>
-        <option value="IDF">Île-de-France</option>
-        <option value="NAQ">Nouvelle-Aquitaine</option>
-        <option value="PAC">PACA</option>
       </select>
 
       <label for="00NgK0000154E4D">ID Entreprise</label>
@@ -140,6 +135,5 @@
       <input type="submit" name="submit" value="Envoyer">
     </form>
   </div>
-
 </body>
 </html>

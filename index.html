@@ -4,37 +4,43 @@
 <!--  character set of your HTML page.                                        -->
 <!--  ----------------------------------------------------------------------  -->
 
-<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Formulaire de Contact</title>
+  <title>Company Form - Phoenix Project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #F5F7FA;
+      background-color: #f5f7fa;
       margin: 0;
       padding: 2rem;
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
-    form {
+    .container {
       background-color: #ffffff;
       padding: 2rem 2.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
       border-top: 8px solid #156064;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 80px;
+      margin-bottom: 1rem;
     }
 
     h1 {
-      text-align: center;
       color: #982649;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     label {
@@ -42,6 +48,7 @@
       margin-bottom: 6px;
       font-weight: 600;
       color: #333;
+      text-align: left;
     }
 
     input[type="text"],
@@ -65,7 +72,7 @@
 
     input[type="submit"] {
       background-color: #156064;
-      color: #ffffff;
+      color: white;
       border: none;
       padding: 12px 20px;
       border-radius: 8px;
@@ -81,14 +88,23 @@
       color: #000;
     }
 
+    form {
+      text-align: left;
+    }
+
     @media (max-width: 600px) {
-      form {
+      .container {
         padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <div class="container">
+   <img class="logo" src="https://raw.githubusercontent.com/amplee-tech/phoenix-form/main/assets/logo.png" alt="Logo">
+    <h1>Company Form Test<br>Phoenix Project</h1>
+
     
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000005hxQ9" method="POST">
     

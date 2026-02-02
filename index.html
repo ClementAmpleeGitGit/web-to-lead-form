@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 
-  <!-- Optionnel : police "clean" (si tu veux coller au site, remplace par la font Forgeblast) -->
+  <!-- Police propre (tu peux la remplacer par la font exacte du site Forgeblast) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,32 +14,32 @@
 
   <style>
     :root{
-      /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-         A ADAPTER POUR COLLER A LA CHARTE FORGEBLAST
-         Remplace juste ces valeurs (couleurs / radius / font).
-      <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
-      --bg: #0b1020;                 /* fond */
-      --surface: rgba(255,255,255,.06); /* carte */
+      /* Base */
+      --bg: #0b0f14;                 
+      --surface: rgba(255,255,255,.06);
       --surface-2: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
       --border: rgba(255,255,255,.14);
 
-      --primary: #7c3aed;            /* couleur principale (bouton) */
-      --primary-2: #22d3ee;          /* accent secondaire (focus/halo) */
+      /* Orange Forgeblast (calé sur ton logo) */
+      --primary: #F7931E;
+      --primary-2: #FF6101;
+      --primary-3: #FFD089;
 
       --radius: 16px;
       --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
+
     body{
       margin: 0;
       font-family: var(--font);
       color: var(--text);
       background:
-        radial-gradient(900px 600px at 15% 20%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(900px 600px at 80% 70%, rgba(34,211,238,.25), transparent 55%),
+        see radial-gradient(900px 600px at 20% 15%, rgba(247,147,30,.35), transparent 60%),
+        radial-gradient(900px 600px at 80% 75%, rgba(255,97,1,.22), transparent 55%),
         var(--bg);
       min-height: 100vh;
       display: grid;
@@ -67,6 +67,24 @@
       border-bottom: 1px solid rgba(255,255,255,.10);
       background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
     }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.08);
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      flex: 0 0 auto;
+    }
+
+    .brand-text{ min-width: 0; }
 
     .kicker{
       font-size: 12px;
@@ -129,8 +147,8 @@
     input::placeholder{ color: rgba(255,255,255,.45); }
 
     input:focus{
-      border-color: rgba(34,211,238,.55);
-      box-shadow: 0 0 0 4px rgba(34,211,238,.18);
+      border-color: rgba(247,147,30,.65);
+      box-shadow: 0 0 0 4px rgba(247,147,30,.18);
       background: rgba(0,0,0,.34);
     }
 
@@ -156,7 +174,7 @@
       padding: 12px 14px;
       border-radius: 12px;
       font-weight: 600;
-      color: #0b1020;
+      color: #0b0f14;
       background: linear-gradient(90deg, var(--primary), var(--primary-2));
       box-shadow: 0 10px 26px rgba(0,0,0,.35);
       transition: transform .12s ease, filter .12s ease;
@@ -185,14 +203,26 @@
   <div class="wrap">
     <div class="card">
       <div class="header">
-        <p class="kicker">Demo • Web-to-Lead</p>
-        <h1>Demander une démo Forgeblast</h1>
-        <p class="sub">Laisse tes infos — on te recontacte rapidement.</p>
+        <div class="brand">
+          <!-- IMPORTANT:
+               Mets ton fichier dans le repo: assets/forgeblast-logo.png
+               ou remplace src par l'URL publique du logo -->
+          <img src="assets/forgeblast-logo.png" alt="Forgeblast" class="brand-logo">
+
+          <div class="brand-text">
+            <p class="kicker">Demo • Web-to-Lead</p>
+            <h1>Demander une démo Forgeblast</h1>
+            <p class="sub">Laisse tes infos — on te recontacte rapidement.</p>
+          </div>
+        </div>
       </div>
 
       <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000002FKAQ" method="POST">
         <input type="hidden" name="oid" value="00DJ9000002FKAQ">
         <input type="hidden" name="retURL" value="https://forgeblast.com/fr">
+
+        <!-- Optionnel: tagger la source -->
+        <input type="hidden" name="lead_source" value="Website Demo">
 
         <!-- Debug (à activer si besoin)
         <input type="hidden" name="debug" value="1">

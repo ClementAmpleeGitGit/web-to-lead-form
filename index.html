@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 
-  <!-- Police propre (tu peux la remplacer par la font exacte du site Forgeblast) -->
+  <!-- Font clean & SaaS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,58 +14,57 @@
 
   <style>
     :root{
-      /* Base */
-      --bg: #0b0f14;                 
-      --surface: rgba(255,255,255,.06);
-      --surface-2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --border: rgba(255,255,255,.14);
+      /* ===== BASE BLANCHE ===== */
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --border: #e5e7eb;
 
-      /* Orange Forgeblast (calé sur ton logo) */
-      --primary: #F7931E;
-      --primary-2: #FF6101;
-      --primary-3: #FFD089;
+      --text: #0f172a;
+      --muted: #475569;
 
-      --radius: 16px;
+      /* ===== BLEUS (charte tech) ===== */
+      --primary: #2563eb;        /* bleu principal */
+      --primary-soft: #eff6ff;
+      --primary-focus: #93c5fd;
+
+      /* ===== CTA ORANGE FORGEBLAST ===== */
+      --cta: #F7931E;
+      --cta-hover: #FF6101;
+
+      --radius: 14px;
       --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing: border-box; }
 
     body{
       margin: 0;
       font-family: var(--font);
+      background: var(--bg);
       color: var(--text);
-      background:
-        see radial-gradient(900px 600px at 20% 15%, rgba(247,147,30,.35), transparent 60%),
-        radial-gradient(900px 600px at 80% 75%, rgba(255,97,1,.22), transparent 55%),
-        var(--bg);
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 28px 16px;
+      padding: 32px 16px;
     }
 
     .wrap{
       width: 100%;
-      max-width: 780px;
-      display: grid;
-      gap: 14px;
+      max-width: 720px;
     }
 
     .card{
-      background: linear-gradient(180deg, var(--surface), rgba(255,255,255,.03));
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      box-shadow: 0 12px 32px rgba(15,23,42,.08);
       overflow: hidden;
     }
 
     .header{
-      padding: 22px 22px 12px 22px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
     }
 
     .brand{
@@ -75,52 +74,40 @@
     }
 
     .brand-logo{
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.08);
+      width: 48px;
+      height: 48px;
       padding: 8px;
-      border: 1px solid rgba(255,255,255,.12);
-      flex: 0 0 auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #ffffff;
     }
 
-    .brand-text{ min-width: 0; }
-
-    .kicker{
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 6px 0;
-    }
-
-    h1{
+    .brand-name{
       font-size: 20px;
-      margin: 0 0 6px 0;
       font-weight: 600;
-      line-height: 1.25;
+      margin: 0;
+      line-height: 1.2;
     }
 
-    .sub{
-      margin: 0;
-      color: var(--muted);
+    .brand-sub{
+      margin: 4px 0 0 0;
       font-size: 14px;
-      line-height: 1.5;
+      color: var(--muted);
     }
 
     form{
-      padding: 18px 22px 22px 22px;
+      padding: 24px;
     }
 
     .grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 16px;
     }
 
     @media (max-width: 720px){
       .grid{ grid-template-columns: 1fr; }
-      .header, form{ padding-left: 16px; padding-right: 16px; }
+      .header, form{ padding: 16px; }
     }
 
     .field{
@@ -130,71 +117,84 @@
 
     label{
       font-size: 13px;
-      color: var(--muted);
+      font-weight: 500;
+      color: var(--text);
     }
 
-    input[type="text"], input[type="email"], input[type="tel"]{
+    .req{
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"]{
       width: 100%;
       padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.25);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
       color: var(--text);
       outline: none;
-      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+      transition: border-color .15s ease, box-shadow .15s ease;
     }
 
-    input::placeholder{ color: rgba(255,255,255,.45); }
+    input::placeholder{
+      color: #94a3b8;
+    }
 
     input:focus{
-      border-color: rgba(247,147,30,.65);
-      box-shadow: 0 0 0 4px rgba(247,147,30,.18);
-      background: rgba(0,0,0,.34);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.15);
     }
 
     .actions{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
 
     .hint{
       font-size: 12px;
       color: var(--muted);
       line-height: 1.4;
+      max-width: 420px;
     }
 
     button{
-      border: 0;
+      border: none;
       cursor: pointer;
-      padding: 12px 14px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
       font-weight: 600;
-      color: #0b0f14;
-      background: linear-gradient(90deg, var(--primary), var(--primary-2));
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
-      transition: transform .12s ease, filter .12s ease;
+      font-size: 14px;
+      color: #ffffff;
+      background: linear-gradient(90deg, var(--cta), var(--cta-hover));
+      box-shadow: 0 10px 24px rgba(247,147,30,.35);
+      transition: transform .12s ease, box-shadow .12s ease;
       min-width: 180px;
     }
 
-    button:hover{ transform: translateY(-1px); filter: brightness(1.04); }
-    button:active{ transform: translateY(0px); filter: brightness(.98); }
+    button:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(247,147,30,.45);
+    }
 
-    .req{
-      color: rgba(255,255,255,.75);
-      font-size: 12px;
-      margin-left: 6px;
+    button:active{
+      transform: translateY(0);
+      box-shadow: 0 8px 20px rgba(247,147,30,.30);
     }
 
     .footer-note{
       text-align: center;
-      color: rgba(255,255,255,.45);
       font-size: 12px;
-      margin-top: 6px;
+      color: #94a3b8;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -204,15 +204,11 @@
     <div class="card">
       <div class="header">
         <div class="brand">
-          <!-- IMPORTANT:
-               Mets ton fichier dans le repo: assets/forgeblast-logo.png
-               ou remplace src par l'URL publique du logo -->
+          <!-- Logo à placer dans assets/forgeblast-logo.png -->
           <img src="assets/forgeblast-logo.png" alt="Forgeblast" class="brand-logo">
-
-          <div class="brand-text">
-            <p class="kicker">Demo • Web-to-Lead</p>
-            <h1>Demander une démo Forgeblast</h1>
-            <p class="sub">Laisse tes infos — on te recontacte rapidement.</p>
+          <div>
+            <h1 class="brand-name">Forgeblast</h1>
+            <p class="brand-sub">Demande de démo — Web-to-Lead Salesforce</p>
           </div>
         </div>
       </div>
@@ -220,60 +216,58 @@
       <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000002FKAQ" method="POST">
         <input type="hidden" name="oid" value="00DJ9000002FKAQ">
         <input type="hidden" name="retURL" value="https://forgeblast.com/fr">
-
-        <!-- Optionnel: tagger la source -->
         <input type="hidden" name="lead_source" value="Website Demo">
-
-        <!-- Debug (à activer si besoin)
-        <input type="hidden" name="debug" value="1">
-        <input type="hidden" name="debugEmail" value="clement.richard.mail@gmail.com">
-        -->
 
         <div class="grid">
           <div class="field">
             <label for="first_name">Prénom</label>
-            <input id="first_name" name="first_name" maxlength="40" type="text" placeholder="Ex : Alex" autocomplete="given-name">
+            <input id="first_name" name="first_name" type="text" placeholder="Ex : Alex">
           </div>
 
           <div class="field">
             <label for="last_name">Nom <span class="req">requis</span></label>
-            <input id="last_name" name="last_name" maxlength="80" type="text" placeholder="Ex : Martin" autocomplete="family-name" required>
+            <input id="last_name" name="last_name" type="text" required placeholder="Ex : Martin">
           </div>
 
           <div class="field">
             <label for="email">Adresse e-mail <span class="req">requis</span></label>
-            <input id="email" name="email" maxlength="80" type="email" placeholder="alex@entreprise.com" autocomplete="email" required>
+            <input id="email" name="email" type="email" required placeholder="alex@entreprise.com">
           </div>
 
           <div class="field">
             <label for="phone">Téléphone</label>
-            <input id="phone" name="phone" maxlength="40" type="tel" placeholder="+33 6 00 00 00 00" autocomplete="tel">
+            <input id="phone" name="phone" type="tel" placeholder="+33 6 00 00 00 00">
           </div>
 
           <div class="field">
             <label for="company">Société <span class="req">requis</span></label>
-            <input id="company" name="company" maxlength="40" type="text" placeholder="Ex : Forgeblast" autocomplete="organization" required>
+            <input id="company" name="company" type="text" required placeholder="Forgeblast">
           </div>
 
           <div class="field">
             <label for="city">Ville</label>
-            <input id="city" name="city" maxlength="40" type="text" placeholder="Ex : Paris" autocomplete="address-level2">
+            <input id="city" name="city" type="text" placeholder="Paris">
           </div>
 
-          <div class="field" style="grid-column: 1 / -1;">
-            <label for="state">Région/Province</label>
-            <input id="state" name="state" maxlength="20" type="text" placeholder="Ex : Île-de-France" autocomplete="address-level1">
+          <div class="field" style="grid-column:1/-1">
+            <label for="state">Région / Province</label>
+            <input id="state" name="state" type="text" placeholder="Île-de-France">
           </div>
         </div>
 
         <div class="actions">
-          <p class="hint">En soumettant, tu acceptes d’être recontacté pour la démo.</p>
-          <button type="submit" name="submit">Envoyer ma demande</button>
+          <p class="hint">
+            En soumettant ce formulaire, vous acceptez d’être recontacté par Forgeblast
+            dans le cadre d’une démonstration.
+          </p>
+          <button type="submit">Demander une démo</button>
         </div>
       </form>
     </div>
 
-    <div class="footer-note">Formulaire de démo — Web-to-Lead Salesforce</div>
+    <div class="footer-note">
+      Démo Web-to-Lead — Salesforce
+    </div>
   </div>
 </body>
 </html>

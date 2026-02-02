@@ -1,139 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Company Form - Phoenix Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+  <!-- Optionnel : police "clean" (si tu veux coller au site, remplace par la font Forgeblast) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <title>Forgeblast — Demo Web-to-Lead</title>
+
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f7fa;
+    :root{
+      /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+         A ADAPTER POUR COLLER A LA CHARTE FORGEBLAST
+         Remplace juste ces valeurs (couleurs / radius / font).
+      <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+      --bg: #0b1020;                 /* fond */
+      --surface: rgba(255,255,255,.06); /* carte */
+      --surface-2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --border: rgba(255,255,255,.14);
+
+      --primary: #7c3aed;            /* couleur principale (bouton) */
+      --primary-2: #22d3ee;          /* accent secondaire (focus/halo) */
+
+      --radius: 16px;
+      --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body{
       margin: 0;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 20%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 600px at 80% 70%, rgba(34,211,238,.25), transparent 55%),
+        var(--bg);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
     }
 
-    .container {
-      background-color: #ffffff;
-      padding: 2rem 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      max-width: 700px;
+    .wrap{
       width: 100%;
-      border-top: 8px solid #156064;
-      text-align: center;
-      overflow: auto;
+      max-width: 780px;
+      display: grid;
+      gap: 14px;
     }
 
-    .logo {
-      max-width: 100px;
-      margin-bottom: 1rem;
+    .card{
+      background: linear-gradient(180deg, var(--surface), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      overflow: hidden;
     }
 
-    h1 {
-      color: #982649;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
+    .header{
+      padding: 22px 22px 12px 22px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+
+    .kicker{
+      font-size: 12px;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 6px 0;
     }
 
-    form {
-      width: 100%;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
+    h1{
+      font-size: 20px;
+      margin: 0 0 6px 0;
       font-weight: 600;
-      color: #333;
+      line-height: 1.25;
     }
 
-    input[type="text"],
-    input[type="email"],
-    select {
-      width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 20px;
-      border: 2px solid #65B891;
-      border-radius: 8px;
-      box-sizing: border-box;
+    .sub{
+      margin: 0;
+      color: var(--muted);
       font-size: 14px;
+      line-height: 1.5;
     }
 
-    input:focus,
-    select:focus {
-      border-color: #2CF6B3;
-      outline: none;
+    form{
+      padding: 18px 22px 22px 22px;
     }
 
-    input[type="submit"] {
-      background-color: #156064;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 720px){
+      .grid{ grid-template-columns: 1fr; }
+      .header, form{ padding-left: 16px; padding-right: 16px; }
+    }
+
+    .field{
+      display: grid;
+      gap: 6px;
+    }
+
+    label{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"]{
       width: 100%;
-      margin-top: 1rem;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
     }
 
-    input[type="submit"]:hover {
-      background-color: #F8E16C;
-      color: #000;
+    input::placeholder{ color: rgba(255,255,255,.45); }
+
+    input:focus{
+      border-color: rgba(34,211,238,.55);
+      box-shadow: 0 0 0 4px rgba(34,211,238,.18);
+      background: rgba(0,0,0,.34);
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 1.5rem;
-      }
+    .actions{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    button{
+      border: 0;
+      cursor: pointer;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #0b1020;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      transition: transform .12s ease, filter .12s ease;
+      min-width: 180px;
+    }
+
+    button:hover{ transform: translateY(-1px); filter: brightness(1.04); }
+    button:active{ transform: translateY(0px); filter: brightness(.98); }
+
+    .req{
+      color: rgba(255,255,255,.75);
+      font-size: 12px;
+      margin-left: 6px;
+    }
+
+    .footer-note{
+      text-align: center;
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      margin-top: 6px;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <img class="logo" src="https://raw.githubusercontent.com/ClementAmpleeGitGit/web-to-lead-form/main/assets/logo-tbu.png" alt="Logo">
-    <h1>Company Form Test<br>Phoenix Project</h1>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <p class="kicker">Demo • Web-to-Lead</p>
+        <h1>Demander une démo Forgeblast</h1>
+        <p class="sub">Laisse tes infos — on te recontacte rapidement.</p>
+      </div>
 
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000005hxQ9" method="POST">
-      <input type="hidden" name="oid" value="00DgK000005hxQ9">
-      <input type="hidden" name="retURL" value="https://www.google.com">
-      <input type="hidden" name="debug" value="1">
-      <input type="hidden" name="debugEmail" value="clement@amplee.tech">
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DJ9000002FKAQ" method="POST">
+        <input type="hidden" name="oid" value="00DJ9000002FKAQ">
+        <input type="hidden" name="retURL" value="https://forgeblast.com/fr">
 
-      <label for="first_name">Prénom</label>
-      <input id="first_name" name="first_name" maxlength="40" type="text">
+        <!-- Debug (à activer si besoin)
+        <input type="hidden" name="debug" value="1">
+        <input type="hidden" name="debugEmail" value="clement.richard.mail@gmail.com">
+        -->
 
-      <label for="last_name">Nom</label>
-      <input id="last_name" name="last_name" maxlength="80" type="text">
+        <div class="grid">
+          <div class="field">
+            <label for="first_name">Prénom</label>
+            <input id="first_name" name="first_name" maxlength="40" type="text" placeholder="Ex : Alex" autocomplete="given-name">
+          </div>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" maxlength="80" type="email">
+          <div class="field">
+            <label for="last_name">Nom <span class="req">requis</span></label>
+            <input id="last_name" name="last_name" maxlength="80" type="text" placeholder="Ex : Martin" autocomplete="family-name" required>
+          </div>
 
-      <label for="company">Entreprise</label>
-      <input id="company" name="company" maxlength="40" type="text">
+          <div class="field">
+            <label for="email">Adresse e-mail <span class="req">requis</span></label>
+            <input id="email" name="email" maxlength="80" type="email" placeholder="alex@entreprise.com" autocomplete="email" required>
+          </div>
 
-      <label for="city">Ville</label>
-      <input id="city" name="city" maxlength="40" type="text">
+          <div class="field">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" maxlength="40" type="tel" placeholder="+33 6 00 00 00 00" autocomplete="tel">
+          </div>
 
-      <label for="country_code">Pays</label>
-      <select id="country_code" name="country_code">
-        <option value="">-- Choisissez --</option>
-        <option value="FR">France</option>
-        <option value="BE">Belgique</option>
-        <option value="CH">Suisse</option>
-        <option value="CA">Canada</option>
-        <option value="US">USA</option>
-      </select>
+          <div class="field">
+            <label for="company">Société <span class="req">requis</span></label>
+            <input id="company" name="company" maxlength="40" type="text" placeholder="Ex : Forgeblast" autocomplete="organization" required>
+          </div>
 
-      <label for="00NgK0000154E4D">ID Entreprise</label>
-      <input id="00NgK0000154E4D" name="00NgK0000154E4D" maxlength="30" type="text">
+          <div class="field">
+            <label for="city">Ville</label>
+            <input id="city" name="city" maxlength="40" type="text" placeholder="Ex : Paris" autocomplete="address-level2">
+          </div>
 
-      <input type="submit" name="submit" value="Envoyer">
-    </form>
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="state">Région/Province</label>
+            <input id="state" name="state" maxlength="20" type="text" placeholder="Ex : Île-de-France" autocomplete="address-level1">
+          </div>
+        </div>
+
+        <div class="actions">
+          <p class="hint">En soumettant, tu acceptes d’être recontacté pour la démo.</p>
+          <button type="submit" name="submit">Envoyer ma demande</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer-note">Formulaire de démo — Web-to-Lead Salesforce</div>
   </div>
 </body>
 </html>
